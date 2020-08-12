@@ -19,7 +19,7 @@ inline void KMP(){
     for(int i = 1; i <= m; i++){
         while(k > 0 && N[k + 1] != M[i])
             k = pi[k];
-        if(N[k + 1]==M[i]) k++;
+        if(N[k + 1] == M[i]) k++;
         if(k == n) st[ind++] = i;
     }
 }
