@@ -1,15 +1,16 @@
-struct Edge{
-    int u, v, valid;
-} M[1 + MAXM];
-std::vector <int> G[1 + MAXN];
-int gr[1 + MAXN];
-
-void ciclu(int node){
-    for(auto y: G[node])
-        if(M[y].valid){
-            M[y].valid = 0;
-            if(M[y].u == node) ciclu(M[y].v);
-            else ciclu(M[y].u);
+int valid[1 + MAXM];
+std::vector <std::pair<int, int>> G[1 + MAXN];
+std::vector <int> tour;
+ 
+void cycle(int node){
+    while(G[node].size()) {
+        auto [dest, ind] = G[node][0];
+        std::swap(G[node][0], G[node].back());
+        G[node].pop_back();
+        if(valid[ind]) {
+            valid[ind] = 0;
+            cycle(dest);
         }
-    fprintf(fo,"%d ", node);
+    }
+    tour.push_back(node);
 }
