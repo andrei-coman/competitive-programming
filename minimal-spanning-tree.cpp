@@ -6,7 +6,7 @@ int cmpM(Edge A, Edge B){return A.cost < B.cost;}
 int st[1 + MAXN], ind = 0;
 
 int father[1 + MAXN];
-inline int Union(int a, int b){
+inline void Union(int a, int b){
     father[b] = a;
 }
 int Find(int x){
